@@ -10,9 +10,11 @@ class Book(models.Model):
     isbn = models.CharField(max_length=13)
     pub_date = models.DateField()
     edition = models.IntegerField()
-    borrower = models.ForeignKey(User, blank=True, null=True)
-
-
+    issue_date = models.DateField(blank=True, null=True)
+    return_date = models.DateField(blank=True, null=True)
+    borrower = models.ForeignKey(
+        User, blank=True, null=True, related_name='borrowed_books')
+        
 class Subject(models.Model):
     title = models.CharField(max_length=100)
     books = models.ManyToManyField(Book, related_name='subjects')
