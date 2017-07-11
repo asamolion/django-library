@@ -10,4 +10,7 @@ router.register(r'subjects', views.SubjectViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^register/', views.CreateUserView.as_view(), name='user'),
+    url(r'^api-auth/', include('rest_framework.urls',
+                               namespace='rest_framework')),
 ]
